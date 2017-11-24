@@ -107,3 +107,11 @@ example the number of results per page can be changed, or automatic
 in-file search can be disabled.  For a full list of options customize
 the org-recoll group.
 
+** Screenshots
+*** Search
+[[./screenshots/Search.png]]
+*** Opening a Text Result
+[[./screenshots/epub-results.png]]
+*** Opening a PDF Result
+[[./screenshots/pdf-results.png]]
+
