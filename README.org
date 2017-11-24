@@ -1,0 +1,107 @@
+* org-recoll.el
+A lightweight emacs org-mode wrapper around the recoll full-text search engine
+** Features
++ [[http://www.lesbonscomptes.com/recoll/][Recoll]] provides fast full-text searching of the contents of your
+  files, and *org-recoll* brings those results into emacs.  Recoll can
+  index and search a wide-variety of file types (most office formats,
+  pdf, epub, various archive formats, and much, much more).
++ *org-recoll* formats search results into org-style file links, and
+  includes abstracts showing the context of the search-term in each
+  file.
++ When a file link is opened, *org-recoll* automatically initiates a
+  search within the opened file.  Specifically, *org-recoll* prompts
+  for a search term (defaulting to the original search), and then
+  automatically begins a search within the file, choosing a
+  search-type suitable for the file (isearch for plain text, dired, or
+  epub; pdf-occur for pdfs; doc-view-search for other docs).
++ Automatically renders html (using shr) for easy navigation of
+  archived web-pages.
+
+** Why?
+I wanted a convenient full-text file-search engine integrated into
+emacs.  Recoll is an easy-to-setup, FOSS, cross-platform search engine
+with broad file type support.  This package is an attempt at creating
+an interface/results list similar to a conventional search engine
+inside emacs.
+
+*** Alternatives:
+
+*helm-recoll* exists, but it has a very different interface and also
+requires switching to helm.  org-recoll-mode is intended to provide a
+stand-alone, easy to use solution, which is also easy to integrate into
+an existing org-mode workflow.
+ 
+** Setup
+
+*** Installation of this package
+For now, just download org-recoll.el and add it to your load-path.
+The only hard dependencies are org and dired, but pdf-tools,
+org-pdfview, ereader, and shr are also recommended. A sample
+configuration is provided below.
+
+#+BEGIN_QUOTE
+(load "org-recoll")
+(global-set-key (kbd "C-c g") 'org-recoll-search)
+(global-set-key (kbd "C-c u") 'org-recoll-update-index)
+#+END_QUOTE
+
+
+*** Recoll setup
+
+To use *org-recoll* you need a working recoll setup. At minimum, to
+get things working you'll need to have:
+
+1) Installed recoll and any needed helper programs
+2) Configured recoll (either through the GUI or by editing recoll.conf
+   directly) to tell recoll which directories to index
+3) Run the recoll indexer once. 
+
+Indexing can be initiated in the recoll GUI, by invoking recollindex
+from a terminal, or by calling org-recoll-update-index from inside
+emacs, but the first run will (depending on how many files are to be
+indexed) take quite a while and use all the CPU it can get.  If you
+have more than a few hundred files being indexed, I'd advise running
+it overnight in the GUI.  Subsequent runs will be fairly quick unless
+there have been lots of file changes or new files added.  
+
+NB: If you find some files are not getting indexed as expected you are
+probably missing the relevant helper programs, the recoll GUI can tell
+you which ones it thinks it needs after the first indexing run.
+
+*** Special Setup for Certain Types of Content
+Recoll can index an enormous number of different kinds of files, many
+of which are not plain text.  In general your org-recoll-mode search
+experience will be better if you have ways of opening most or all of
+those files inside emacs (e.g. the automatic file-internal search
+obviously won't work if you open the files externally, etc.).  This
+section discusses a few special cases and provides recommendations for
+emacs integration.
+
+**** .epub
+For purposes of this mode, ereader.el is the recommended way to open
+epubs for searching.  Nov.el is a newer mode for opening epubs, and
+has superior rendering, but does not render the entire file at once,
+and so does not support full text searching (it will only search the
+chapter it has currently rendered, which is less useful in this
+context).
+
+**** .pdf
+pdf-tools is very strongly recommended for pdfs as it has many
+advantages over the default doc-view.  Because pdf rendering in emacs
+can be slow, isearching a whole document is not ideal.  Therefore
+instead of auto-starting isearch, pdf-occur is called (when available)
+for pdfs because it provides a better user experience.
+
+** Usage
+Just bind org-recoll-search to a keybind of your choosing (I use "C-c
+g" after a certain famous search engine starting with 'g') and you're
+ready to go.  Once you've got your first page of results you can page
+forward and backward with "C-c n" and "C-c p".  Links can be opened by
+hitting RET, or "C-c o."
+
+*** Customization
+Various parts of *org-recoll*'s behavior can be customized.  For
+example the number of results per page can be changed, or automatic
+in-file search can be disabled.  For a full list of options customize
+the org-recoll group.
+
