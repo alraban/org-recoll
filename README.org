@@ -45,7 +45,7 @@ configuration is provided below.
 (load "org-recoll")
 (global-set-key (kbd "C-c g") 'org-recoll-search)
 (global-set-key (kbd "C-c u") 'org-recoll-update-index)
-
+#+END_SRC
 
 *** Recoll setup
 
