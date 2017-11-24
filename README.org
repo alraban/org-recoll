@@ -3,8 +3,7 @@
 ** Features
 + [[http://www.lesbonscomptes.com/recoll/][Recoll]] provides fast
   full-text searching of the contents of your files, and *org-recoll*
-  brings those results into emacs.  
-+ Recoll can index and search a wide-variety of file types (most
+  brings those results into emacs.  Recoll can index and search a wide-variety of file types (most
   office formats, pdf, epub, various archive formats, and much, much
   more).
 + *org-recoll* formats search results into org-style file links, and
