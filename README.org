@@ -41,11 +41,10 @@ The only hard dependencies are org and dired, but pdf-tools,
 org-pdfview, ereader, and shr are also recommended. A sample
 configuration is provided below.
 
-#+BEGIN_QUOTE
+#+BEGIN_SRC emacs-lisp
 (load "org-recoll")
 (global-set-key (kbd "C-c g") 'org-recoll-search)
 (global-set-key (kbd "C-c u") 'org-recoll-update-index)
-#+END_QUOTE
 
 
 *** Recoll setup
