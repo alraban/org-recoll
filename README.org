@@ -71,7 +71,7 @@ you which ones it thinks it needs after the first indexing run.
 
 *** Special Setup for Certain Types of Content
 Recoll can index an enormous number of different kinds of files, many
-of which are not plain text.  In general your org-recoll-mode search
+of which are not plain text.  In general your *org-recoll* search
 experience will be better if you have ways of opening most or all of
 those files inside emacs (e.g. the automatic file-internal search
 obviously won't work if you open the files externally, etc.).  This
