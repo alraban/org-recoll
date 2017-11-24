@@ -29,7 +29,7 @@ inside emacs.
 *** Alternatives:
 
 *helm-recoll* exists, but it has a very different interface and also
-requires switching to helm.  org-recoll-mode is intended to provide a
+requires switching to helm.  *org-recoll* is intended to provide a
 stand-alone, easy to use solution, which is also easy to integrate into
 an existing org-mode workflow.
  
