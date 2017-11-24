@@ -1,11 +1,10 @@
 * Org-Recoll
  This package provides an emacs wrapper for the recoll full-text file search program.
 ** Features
-+ [[http://www.lesbonscomptes.com/recoll/][Recoll]] provides fast
-  full-text searching of the contents of your files, and *org-recoll*
-  brings those results into emacs.  Recoll can index and search a wide-variety of file types (most
-  office formats, pdf, epub, various archive formats, and much, much
-  more).
++ [[http://www.lesbonscomptes.com/recoll/][Recoll]] provides fast full-text searching of the contents of your
+  files, and *org-recoll* brings those results into emacs.  Recoll can
+  index and search a wide-variety of file types (most office formats,
+  pdf, epub, various archive formats, and much, much more).
 + *org-recoll* formats search results into org-style file links, and
   includes abstracts showing the context of the search-term in each
   file.
@@ -112,4 +111,3 @@ the org-recoll group.
 [[./screenshots/epub-results.png]]
 *** Opening a PDF Result
 [[./screenshots/pdf-results.png]]
-
