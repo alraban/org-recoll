@@ -100,6 +100,7 @@ deleting/editing parts of your research library."
     (define-key kmap (kbd "C-c n") 'org-recoll-next-page)
     (define-key kmap (kbd "C-c p") 'org-recoll-previous-page)
     (define-key kmap (kbd "C-c q") 'delete-window)
+    (define-key kmap (kbd "q") 'quit-window)
     kmap)
   "The keymap used for `org-recoll-mode'.")
 
