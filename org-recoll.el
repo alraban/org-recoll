@@ -67,6 +67,7 @@ initated and this variable is not evaluated."
 (defcustom org-recoll-search-history nil
   "List to store your recoll search history."
   :group 'org-recoll
+  :type 'list
 )
 
 (defcustom org-recoll-result-file-read-only t
@@ -123,12 +124,12 @@ deleting/editing parts of your research library."
 
 (defun org-recoll-compare-string-to-list (string list)
   "Compares STRING to each element of LIST."
-  (setq org-recoll-matched nil)
-  (while list
-    (if (string= (prin1-to-string (car list)) string)
-	(setq org-recoll-matched t))
-    (setq list (cdr list)))
-  org-recoll-matched)
+  (let ((matched nil))
+    (while list
+      (if (string= (prin1-to-string (car list)) string)
+	  (setq matched t))
+      (setq list (cdr list)))
+    matched))
 
 (defun org-recoll-fill-region-paragraphs ()
   "Fill region like `org-fill-paragraph' for each para in buffer."
