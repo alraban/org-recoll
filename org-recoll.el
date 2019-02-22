@@ -309,6 +309,7 @@ If PAGING is t this indicates that the function is being called to page through 
 ;;
 
 
+;;;###autoload
 (defun org-recoll-update-index ()
   "Invoke the recoll index update command string specified in ORG-RECOLL-INDEX-INVOCATION."
   (interactive)
@@ -339,6 +340,7 @@ If SQUERY is passed offer it as a default."
     " " 'minibuffer-complete-word)
   squery)
 
+;;;###autoload
 (defun org-recoll-search (&optional query)
   "Prompt for a QUERY and search."
   (interactive)
