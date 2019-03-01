@@ -48,6 +48,12 @@ backgrounds the process by default"
   :group 'org-recoll
   :type 'string)
 
+(defcustom org-recoll-index-specific-config t
+  "Whether use specific config file for only indexing your `org-directory'."
+  :group 'org-recoll
+  :type 'boolean
+  :safe 'booleanp)
+
 (defcustom org-recoll-file-search-automatically t
   "Toggle whether file-search starts automatically after following a link.
 Set to nil to disable.  This is a good idea if you aren't opening
@@ -313,7 +319,13 @@ If PAGING is t this indicates that the function is being called to page through 
 (defun org-recoll-update-index ()
   "Invoke the recoll index update command string specified in ORG-RECOLL-INDEX-INVOCATION."
   (interactive)
-  (shell-command (concat org-recoll-index-invocation " &") "*org-recoll-index*" "*org-recoll-index*"))
+  (shell-command
+   (concat
+    org-recoll-index-invocation
+    (if org-recoll-index-specific-config
+        (concat "-c " (file-name-directory (or load-file-name (buffer-file-name)))))
+    " &")
+   "*org-recoll-index*" "*org-recoll-index*"))
 
 (defun org-recoll-next-page ()
   "Delivers the next page of results."
