@@ -68,6 +68,9 @@ NB: If you find some files are not getting indexed as expected you are
 probably missing the relevant helper programs, the recoll GUI can tell
 you which ones it thinks it needs after the first indexing run.
 
+NB: If you are seeing additional undesired messages in the recoll
+results (e.g. concerning the location of your configuration file), try
+setting the loglevel variable in your recoll.conf to 2 or lower. 
 *** Special Setup for Certain Types of Content
 Recoll can index an enormous number of different kinds of files, many
 of which are not plain text.  In general your *org-recoll* search
