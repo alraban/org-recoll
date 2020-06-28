@@ -297,7 +297,7 @@ If PAGING is t this indicates that the function is being called to page through 
   (insert (shell-command-to-string (concat org-recoll-command-invocation " -Q '" (org-recoll-sanitize-single-quote squery) "'")))
      (insert (concat "\n" "Results: " (number-to-string org-recoll-start-of-current-page) " - " (number-to-string org-recoll-end-of-current-page) "\n\n"))
      ;;Print results
-     (insert (shell-command-to-string (concat org-recoll-command-invocation " -n '" (number-to-string org-recoll-start-of-current-page) "-" (number-to-string org-recoll-results-num) "' -q " "'" (org-recoll-sanitize-single-quote squery) "'" " | tail +3")))
+     (insert (shell-command-to-string (concat org-recoll-command-invocation " -n '" (number-to-string org-recoll-start-of-current-page) "-" (number-to-string org-recoll-results-num) "' -q " "'" (org-recoll-sanitize-single-quote squery) "'" " | tail -n +3")))
   ;;Format
   (org-recoll-format-results)
   ;;Prevent editing
